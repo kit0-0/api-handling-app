@@ -1,21 +1,18 @@
 
 import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { SessionProvider } from './context/SessionContext';
-import DataComponent from './components/DataComponent';
-
-const queryClient = new QueryClient();
+import { Provider } from 'react-redux';
+import { store } from './api/store';
+import APIRequest from './components/APIRequest';
 
 function App() {
-    return (
-        <QueryClientProvider client={queryClient}>
-            <SessionProvider>
-                <div className="App">
-                    <DataComponent />
-                </div>
-            </SessionProvider>
-        </QueryClientProvider>
-    );
+  return (
+    <Provider store={store}>
+      <div className="App">
+        <h1>PokeAPI Example</h1>
+        <APIRequest />
+      </div>
+    </Provider>
+  );
 }
 
 export default App;
